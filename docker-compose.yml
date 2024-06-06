@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./
+    ports:
+      - "8084:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    external: true
