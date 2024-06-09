@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-  
       <header v-if="isSessionPage" id="nav">
         <a href="/">
           <img src="./assets/logo.png" alt="SportFirst Logo" style="height: 85px;" /></a>
@@ -14,8 +13,6 @@
         </div>
         <!-- ... -->
       </header>
-  
-  
   
       <header v-else-if="!isResetPasswordPage && !isSignUpPage && !isPricingCoursePage && !isSessionPage && !isProfilePage " id="nav">
         <a href="/">
@@ -36,7 +33,6 @@
           <router-link to="/" class="nav-link">Accueil</router-link>
         </div>
       </header>
-  
   
       <header v-else-if="isSignUpPage" id="nav">
         <a href="/">
@@ -64,10 +60,8 @@
           <button @click="hideReservationsPopup">Fermer</button>
         </div>
       </div>
-  
-  
+
       <router-view></router-view>
-  
   
       <footer v-if="!isResetPasswordPage && !isSignUpPage && !isProfilePage">
         <div class="social-icons">
@@ -90,7 +84,6 @@
       </footer>
     </div>
   </template>
-  
   
   
   <script>
@@ -169,9 +162,7 @@
   };
   </script>
   
-  
-  
-  
+
   <style>
   
   html, body {
@@ -247,7 +238,7 @@
   }
   
   .nav-link:hover {
-    color:  #f4d03f
+    color:  #FFD700
   }
   
   .nav-links {
@@ -257,7 +248,7 @@
   }
   
   footer {
-    background-color: #BF5E70;
+    background-color: #be1919;
     color: white;
     text-align: center;
     padding: 20px;
@@ -289,7 +280,6 @@
     margin: 10px 0;
   }
   
-  
   @media (max-width: 768px) {
     #nav {
       flex-direction: column;
@@ -298,7 +288,6 @@
   
     .nav-links {
       margin-left: 0;
-  
       align-items: center;
       width: 100%;
     }
@@ -321,9 +310,6 @@
       margin: 0 5px;
     }
   }
-  
-  
-  
   
   </style>
   
