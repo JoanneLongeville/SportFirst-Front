@@ -10,10 +10,8 @@
         </div>
       </div>
 
-
       <form class="signup-form" @submit.prevent="createAccount">
         <h2 class="form-title">FORMULAIRE D'INSCRIPTION</h2>
-
 
         <div class="form-group">
           <input class="custom-input" v-model="userData.firstname" type="text" placeholder="Prénom" required>
@@ -27,7 +25,6 @@
         <div class="form-group">
           <input class="custom-input" v-model="userData.email" type="email" placeholder="E-mail" required>
         </div>
-
 
         <div class="form-group">
           <div class="password-container">
@@ -43,7 +40,6 @@
           </ul>
         </div>
 
-
         <div class="form-group">
           <div class="password-container">
             <input class="custom-input" id="custom-input" :type="showPassword ? 'text' : 'password'" v-model="confirmPassword" placeholder="Confirmer le mot de passe" @input="checkPasswordsMatch" required>
@@ -52,15 +48,12 @@
           <div v-if="passwordMatchError" class="error-message">{{ passwordMatchError }}</div>
         </div>
 
-
         <button type="submit" class="create-account-button">Créer un compte</button>
       </form>
     </div>
-
-
-
   </div>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -119,26 +112,25 @@ export default {
         return;
       }
 
-      axios.post('http://localhost:8082/create-account', this.userData)
+      axios.post('http://localhost:5000/accounts', this.userData)
           .then(() => {
-
             this.confirmationMessage = "Votre compte a bien été créé. Vous allez être redirigé vers la page d'accueil.";
-
             setTimeout(() => {
               this.$router.push('/');
               this.resetForm();
             }, 2000);
           })
+
           .catch(error => {
             if (error.response && error.response.status === 409) {
-
               this.errorMessage = "Vous avez déjà un compte. Vous allez être redirigé vers la page d'accueil.";
               setTimeout(() => {
                 this.$router.push('/');
                 this.resetForm();
               }, 3000);
+            } else if (error.request) {
+              this.errorMessage = "Aucune réponse du serveur. Veuillez réessayer plus tard."
             } else {
-
               this.errorMessage = error.response ? error.response.data.error || 'Erreur lors de la création du compte.' : "Erreur de connexion au serveur.";
             }
           });
@@ -161,6 +153,8 @@ export default {
   }
 };
 </script>
+
+
 <style scoped>
 
 .outer-container {
@@ -182,7 +176,6 @@ export default {
   padding: 35px;
   margin-top: 80px;
   max-width: 700px;
-
 }
 .custom-input {
   border-color: #000 !important;
@@ -202,7 +195,6 @@ export default {
 }
 
 .form-group {
-
   margin-bottom: 5px;
 }
 
@@ -218,10 +210,7 @@ export default {
   color: red;
 }
 
-
-
 input[type="text"].custom-input,
-
 input[type="password"].custom-input,
 input[type="firstname"].custom-input,
 input[type="lastname"].custom-input,
@@ -238,14 +227,12 @@ input[type="phone"].custom-input {
 
 input[type="email"]{
   padding: 10px;
-
 }
+
 .password-container {
 padding-right: 20px;
   padding-top:7px ;
   position: relative;
-
-
 }
 
 #custom-input{
@@ -315,10 +302,6 @@ padding-right: 20px;
   text-align: center;
 }
 
-
-
-
-
 .modal-content button:hover {
   background-color: #f4d03f ;
 }
@@ -331,7 +314,6 @@ padding-right: 20px;
     padding: 20px;
     margin-top: 200px;
     max-width: 370px;
-
   }
 
   input[type="text"].custom-input,
@@ -349,6 +331,7 @@ padding-right: 20px;
     border-color: #000 !important;
   }
 }
+
 @media (min-width:320px) and (max-width:479px) {
   .container {
     background-color: #fff;
@@ -357,42 +340,31 @@ padding-right: 20px;
     padding: 20px;
     margin-top: 180px;
     max-width: 370px;
-
   }
 }
+
 @media (min-width:480px) and (max-width:729px) {
-
-
 }
 
 @media (min-width:730px) and (max-width:859px) {
-
 }
 
 @media (min-width:860px) and (max-width:999px) {
-
 }
 
 @media (min-width:1000px) and (max-width:1199px) {
-
 }
 
 @media (min-width:1200px) and (max-width:1384px) {
-
 }
 
 @media (min-width:1385px) and (max-width:1569px) {
-
-
 }
 
 @media (min-width:1570px) and (max-width:1779px) {
-
 }
 
 @media (min-width:1780px) and (max-width:2000px) {
-
 }
 
 </style>
-
