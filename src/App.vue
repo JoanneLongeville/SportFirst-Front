@@ -9,7 +9,7 @@
         <div class="nav-links nav-links-right">
           <router-link to="/profile-page" class="nav-link">Profil</router-link>
           <router-link to="#" class="nav-link" @click="showReservationsPopup">Mes réservations</router-link>
-          <router-link to="/" class="nav-link" @click="logout">|Se déconnecter</router-link>
+          <router-link to="/" class="nav-link" @click="logout">Se déconnecter</router-link>
         </div>
         <!-- ... -->
       </header>
@@ -21,7 +21,7 @@
         <div class="nav-links">
           <router-link to="/" class="nav-link" @click="scrollToSteps2">Qui suis-je?</router-link>
           <router-link to="/pricing" class="nav-link">Tarifs</router-link>
-          <router-link to="/" class="nav-link" @click="scrollToLoginForm">|Se connecter</router-link>
+          <router-link to="/" class="nav-link" @click="scrollToLoginForm">Se connecter</router-link>
         </div>
       </header>
   
