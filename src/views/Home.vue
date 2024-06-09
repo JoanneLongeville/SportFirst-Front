@@ -1,8 +1,9 @@
 <template>
+
   <section id="main-image">
     <div class="wrapper">
       <h2>"L'aventure vers une meilleure forme physique commence ici,<br><strong>rejoignez SportFirst, le leader du coaching sportif."</strong></h2>
-      <a href="/signup" class="btn-inscrivez-vous">inscrivez-vous</a>
+      <a href="/signup" class="btn-inscrivez-vous">Inscrivez-vous</a>
     </div>
   </section>
 
@@ -18,25 +19,20 @@
       </ul>
     </div>
   </section>
+
   <section id="steps2">
     <div class="wrapper">
       <article class="article1">
-
         <div class="overlay">
           <p>
             <small>Je suis Jonathan, votre entraîneur sportif. <br>Diplômé en sciences du sport et certifié en coaching et nutrition sportive,<br>Je vous offre des conseils personnalisés pour vous aider à atteindre vos objectifs.
             </small></p>
         </div>
       </article>
-
-      <article class="article2">
-        <p>"Transformez vos ambitions en réalité, réservez vos séances dès aujourd'hui."</p>
-        <img src="../assets/femme4.jpg" alt="" />
-      </article>
-
       <div class="clear"></div>
     </div>
   </section>
+
   <section class="login" id="login-form">
     <div class="wrapper">
       <div v-if="loginError" class="alert alert-danger">{{ loginError }}</div>
@@ -65,11 +61,10 @@
           <button type="submit" class="btn btn-primary">Se connecter</button>
         </div>
       </form>
+
       <div class="link-container">
         <a href="/signup" class="create-account-link"><strong>Vous n'avez pas de compte ?</strong></a>
-
         <a href="/forgotpassword" class="forgot-password-link" @click.prevent="showModal = true"><strong>Mot de passe oublié ?</strong></a>
-
       </div>
     </div>
   </section>
@@ -77,6 +72,7 @@
   <ForgotPasswordModal v-if="showModal" @close="showModal = false"/>
 
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -104,11 +100,9 @@ export default {
 
         const response = await axios.post('http://localhost:8082/login', this.loginDetails);
 
-
         if (response.status === 200) {
           sessionStorage.setItem('userFirstname', response.data.userFirstname);
           sessionStorage.setItem('userId', response.data.userID);
-
 
           this.$router.push({ name: 'Session', params: { userId: response.data.userID } });
         } else {
@@ -134,8 +128,6 @@ export default {
 
 
 <style scoped>
-
-
 small{
   font-size: 15px;
   font-style: italic;
@@ -153,10 +145,10 @@ p{
 .clear{
   clear: both;
 }
+
 .overlay{
   font-size: 15px;
 }
-
 
 #main-image{
   height: 750px;
@@ -191,12 +183,9 @@ p{
   background:  #f4d03f
 }
 
-
-
 #steps ul{
   margin: 20px 0 0 39px;
   list-style-type: none;
-
 }
 
 #steps ul li{
@@ -215,13 +204,12 @@ p{
 #steps p {
   margin-bottom: 20px;
 }
+
 #step-1, #step-2, #step-3, #step-4 {
   background-size: 75px 75px !important;
 }
 
-
 #step-1{
-
   background: url("../assets/haltere2.png") no-repeat top center;
 }
 
@@ -235,20 +223,15 @@ p{
 
 #step-4{
   background: url("../assets/motivation.png") no-repeat top center;
-
 }
 
-
-
 .article1{
-
-  background-image: url("../assets/entraineur2.png");
+  background-image: url("../assets/coach1.jpg");
   background-size: contain;
   height: 500px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
 }
-
 
 #steps2{
   background-color: #efefef;
@@ -261,34 +244,21 @@ p{
   width: 460px;
   height:320px ;
   float: left;
-
-
 }
+
 #steps2 article:first-child{
   margin-right: 200px;
 }
+
 .overlay{
   background: rgba(255,255,255);
   height: 100%;
   width: 200px;
   padding: 20px;
-
 }
 
 .article1 .overlay p{
   text-align: left;
-
-}
-.article2 p {
-
-  font-weight: bold;
-  font-size: 50px;
-  margin-right: 200px
-}
-
-.article2 img {
-  height: 200px;
-  margin-left: 300px;
 }
 
 .login {
@@ -335,7 +305,6 @@ p{
   font-weight: bold;
 }
 
-
 .forgot-password-link {
   text-decoration: none;
   color: black;
@@ -344,7 +313,6 @@ p{
 
 .forgot-password-link:hover {
   text-decoration: underline;
-
 }
 
 .create-account-link{
@@ -356,9 +324,7 @@ p{
 
 .create-account-link:hover {
   text-decoration: underline;
-
 }
-
 
 .toggle-password {
   position: absolute;
@@ -384,9 +350,11 @@ p{
   p {
     line-height: 10px;
   }
+
   h2{
     font-size: 20px;
   }
+
   .clear {
     clear: both;
   }
@@ -394,7 +362,6 @@ p{
   .overlay {
     font-size: 7px;
   }
-
 
   #main-image {
     height: 650px;
@@ -431,11 +398,9 @@ p{
     background: #f4d03f
   }
 
-
   #steps ul {
     margin: 60px 0 0 -34px;
     list-style-type: none; /* Supprime les puces */
-
   }
 
   #steps ul li {
@@ -448,7 +413,6 @@ p{
   }
 
   #steps h4 {
-
     text-transform: uppercase;
     margin-top: -50px;
   }
@@ -464,7 +428,6 @@ p{
 
 
   #step-1 {
-
     background: url("../assets/haltere2.png") no-repeat top center;
   }
 
@@ -478,23 +441,19 @@ p{
 
   #step-4 {
     background: url("../assets/motivation.png") no-repeat top center;
-
   }
-
-
 
   .article1 {
     flex:1;
 
     margin-bottom: 250px;
     margin-left: -260px;
-    background-image: url("../assets/entraineur2.png");
+    background-image: url("../assets/coach1.jpg");
     background-size: 200px; /* Ajustez cette taille selon vos besoins */
     height: 150px;
     background-repeat: no-repeat;
     background-position: center; /* Centrer l'image dans l'élément */
   }
-
 
   #steps2 {
     align-items: center; /* Centre les éléments verticalement */
@@ -510,46 +469,23 @@ p{
     width: 360px;
     height: 420px;
     float: left;
-
-
   }
 
   #steps2 article:first-child {
     margin-right: -130px;
-
   }
 
   .overlay {
-
     margin-top: 150px;
     background: rgba(255, 255, 255);
     height: 75%;
     width: 135px;
     padding: 15px;
-
   }
 
   .article1 .overlay p {
     text-align: left;
-
   }
-  .article2{
-    display: none;
-
-  }
-  .article2 p {
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 80px;
-    margin-right: 50px;
-    margin-left: 100px;
-    line-height: 1.5;
-  }
-
-  .article2 img{
-    display: none;
-  }
-
 
   .login {
     padding: 60px 0;
@@ -564,7 +500,6 @@ p{
     border: 1px solid #ccc;
     border-radius: 10px;
   }
-
 
   .form-group {
     margin-bottom: 20px;
@@ -589,7 +524,6 @@ p{
     font-weight: bold;
   }
 
-
   .forgot-password-link {
     text-decoration: none;
     color: black;
@@ -610,9 +544,7 @@ p{
 
   .create-account-link:hover {
     text-decoration: underline;
-
   }
-
 }
 
 
@@ -633,9 +565,11 @@ p{
   p {
     line-height: 10px;
   }
+
   h2{
     font-size: 20px;
   }
+
   .clear {
     clear: both;
   }
@@ -643,7 +577,6 @@ p{
   .overlay {
     font-size: 7px;
   }
-
 
   #main-image {
     height: 650px;
@@ -684,7 +617,6 @@ p{
   #steps ul {
     margin: 60px 0 0 5px;
     list-style-type: none;
-
   }
 
   #steps ul li {
@@ -697,7 +629,6 @@ p{
   }
 
   #steps h4 {
-
     text-transform: uppercase;
     margin-top: -50px;
   }
@@ -711,9 +642,7 @@ p{
     background-size: 70px 70px !important;
   }
 
-
   #step-1 {
-
     background: url("../assets/haltere2.png") no-repeat top center;
   }
 
@@ -727,23 +656,19 @@ p{
 
   #step-4 {
     background: url("../assets/motivation.png") no-repeat top center;
-
   }
-
-
 
   .article1 {
     flex:1;
 
     margin-bottom: 250px;
     margin-left: -240px;
-    background-image: url("../assets/entraineur2.png");
+    background-image: url("../assets/coach1.jpg");
     background-size: 200px;
     height: 150px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
 
   #steps2 {
     align-items: center;
@@ -759,44 +684,23 @@ p{
     width: 460px;
     height: 420px;
     float: left;
-
-
   }
 
   #steps2 article:first-child {
     margin-right: -130px;
-
   }
 
   .overlay {
-
     margin-top: 150px;
     background: rgba(255, 255, 255);
     height: 75%;
     width: 135px;
     padding: 15px;
-
   }
 
   .article1 .overlay p {
     text-align: left;
 
-  }
-  .article2{
-    display: none;
-
-  }
-  .article2 p {
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 80px;
-    margin-right: 50px;
-    margin-left: 100px;
-    line-height: 1.5;
-  }
-
-  .article2 img{
-    display: none;
   }
 
   /*login*/
@@ -859,9 +763,7 @@ p{
 
   .create-account-link:hover {
     text-decoration: underline;
-
   }
-
 }
 
 
@@ -931,11 +833,9 @@ p{
     background: #f4d03f
   }
 
-
   #steps ul {
     margin: 60px 0 0 70px;
     list-style-type: none; /* Supprime les puces */
-
   }
 
   #steps ul li {
@@ -948,7 +848,6 @@ p{
   }
 
   #steps h4 {
-
     text-transform: uppercase;
     margin-top: -50px;
   }
@@ -962,9 +861,7 @@ p{
     background-size: 70px 70px !important;
   }
 
-
   #step-1 {
-
     background: url("../assets/haltere2.png") no-repeat top center;
   }
 
@@ -978,22 +875,19 @@ p{
 
   #step-4 {
     background: url("../assets/motivation.png") no-repeat top center;
-
   }
-
 
   .article1 {
     flex: 1;
 
     margin-bottom: 200px;
     margin-left: -180px;
-    background-image: url("../assets/entraineur2.png");
+    background-image: url("../assets/coach1.jpg");
     background-size: 250px;
     height: 150px;
     background-repeat: no-repeat;
     background-position: center;
   }
-
 
   #steps2 {
     align-items: center;
@@ -1009,47 +903,23 @@ p{
     width: 460px;
     height: 320px;
     float: left;
-
-
   }
 
   #steps2 article:first-child {
     margin-right: -130px;
-
   }
 
   .overlay {
-
     margin-top: 120px;
     background: rgba(255, 255, 255);
     height: 96%;
     width: 200px;
     padding: 15px;
-
   }
 
   .article1 .overlay p {
     text-align: left;
   }
-
-  .article2 {
-    display: none;
-
-  }
-
-  .article2 p {
-    font-weight: bold;
-    font-size: 20px;
-    margin-top: 80px;
-    margin-right: 50px;
-    margin-left: 100px;
-    line-height: 1.5;
-  }
-
-  .article2 img {
-    display: none;
-  }
-
 
   .login {
     padding: 60px 0;
@@ -1063,7 +933,6 @@ p{
       border: 1px solid #ccc;
       border-radius: 10px;
     }
-
 
     .form-group {
       margin-bottom: 20px;
@@ -1088,7 +957,6 @@ p{
       font-weight: bold;
     }
 
-
     .forgot-password-link {
       text-decoration: none;
       color: black;
@@ -1097,7 +965,6 @@ p{
 
     .forgot-password-link:hover {
       text-decoration: underline;
-
     }
 
     .create-account-link {
@@ -1109,9 +976,7 @@ p{
 
     .create-account-link:hover {
       text-decoration: underline;
-
     }
-
   }
 
 
@@ -1180,11 +1045,9 @@ p{
       background: #f4d03f
     }
 
-
     #steps ul {
       margin: 60px 0 0 -10px;
       list-style-type: none;
-
     }
 
     #steps ul li {
@@ -1197,7 +1060,6 @@ p{
     }
 
     #steps h4 {
-
       text-transform: uppercase;
       margin-top: -50px;
     }
@@ -1211,9 +1073,7 @@ p{
       background-size: 70px 70px !important; /* Force l'application de cette règle */
     }
 
-
     #step-1 {
-
       background: url("../assets/haltere2.png") no-repeat top center;
     }
 
@@ -1227,22 +1087,19 @@ p{
 
     #step-4 {
       background: url("../assets/motivation.png") no-repeat top center;
-
     }
-
 
     .article1 {
       flex: 1;
 
       margin-bottom: -90px;
       margin-left: -180px;
-      background-image: url("../assets/entraineur2.png");
+      background-image: url("../assets/coach1.jpg");
       background-size: 250px; /* Ajustez cette taille selon vos besoins */
       height: 150px;
       background-repeat: no-repeat;
       background-position: center; /* Centrer l'image dans l'élément */
     }
-
 
     #steps2 {
       align-items: center; /* Centre les éléments verticalement */
@@ -1258,47 +1115,23 @@ p{
       width: 460px;
       height: 320px;
       float: left;
-
-
     }
 
     #steps2 article:first-child {
       margin-right: -130px;
-
     }
 
     .overlay {
-
       margin-top: 120px;
       background: rgba(255, 255, 255);
       height: 96%;
       width: 200px;
       padding: 15px;
-
     }
 
     .article1 .overlay p {
       text-align: left;
     }
-
-    .article2 {
-
-      flex: 1;
-    }
-
-    .article2 p {
-      font-weight: bold;
-      font-size: 20px;
-      margin-top: 80px;
-      margin-right: 50px;
-      margin-left: 100px;
-      line-height: 1.5;
-    }
-
-    .article2 img {
-      display: none;
-    }
-
 
     .login {
       padding: 60px 0;
@@ -1313,7 +1146,6 @@ p{
       border: 1px solid #ccc;
       border-radius: 10px;
     }
-
 
     .form-group {
       margin-bottom: 20px;
@@ -1338,7 +1170,6 @@ p{
       font-weight: bold;
     }
 
-
     .forgot-password-link {
       text-decoration: none;
       color: black;
@@ -1347,7 +1178,6 @@ p{
 
     .forgot-password-link:hover {
       text-decoration: underline;
-
     }
 
     .create-account-link {
@@ -1359,9 +1189,7 @@ p{
 
     .create-account-link:hover {
       text-decoration: underline;
-
     }
-
   }
 
 
@@ -1394,7 +1222,6 @@ p{
     .overlay {
       font-size: 7px;
     }
-
 
     #main-image {
       height: 650px;
@@ -1431,11 +1258,9 @@ p{
       background: #f4d03f
     }
 
-
     #steps ul {
       margin: 60px 0 0 90px;
       list-style-type: none;
-
     }
 
     #steps ul li {
@@ -1448,7 +1273,6 @@ p{
     }
 
     #steps h4 {
-
       text-transform: uppercase;
       margin-top: -50px;
     }
@@ -1461,9 +1285,7 @@ p{
     #step-1, #step-2, #step-3, #step-4 {
       background-size: 70px 70px !important;
 
-
       #step-1 {
-
         background: url("../assets/haltere2.png") no-repeat top center;
       }
 
@@ -1477,22 +1299,19 @@ p{
 
       #step-4 {
         background: url("../assets/motivation.png") no-repeat top center;
-
       }
-
 
       .article1 {
         flex: 1;
 
         margin-bottom: 190px;
         margin-left: -180px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: 250px;
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -1508,49 +1327,25 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
         margin-right: -130px;
-
       }
 
       .overlay {
-
         margin-top: 120px;
         background: rgba(255, 255, 255);
         height: 96%;
         width: 200px;
         padding: 15px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
       }
 
-      .article2 {
-
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 150px;
-        margin-right: 50px;
-        margin-left: 100px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        display: none;
-      }
-
       /*login*/
-
       .login {
         padding: 60px 0;
         text-align: center;
@@ -1564,7 +1359,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -1589,7 +1383,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -1598,7 +1391,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -1610,9 +1402,7 @@ p{
 
       .create-account-link:hover {
         text-decoration: underline;
-
       }
-
     }
 
 
@@ -1640,7 +1430,6 @@ p{
       .overlay {
         font-size: 7px;
       }
-
 
       #main-image {
         height: 730px;
@@ -1681,7 +1470,6 @@ p{
       #steps ul {
         margin: 60px 0 0 -45px;
         list-style-type: none;
-
       }
 
       #steps ul li {
@@ -1693,7 +1481,6 @@ p{
       }
 
       #steps h4 {
-
         text-transform: uppercase;
         margin-top: -50px;
       }
@@ -1706,7 +1493,6 @@ p{
       #step-1, #step-2, #step-3, #step-4 {
         background-size: 65px 65px !important;
       }
-
 
       #step-1 {
 
@@ -1723,22 +1509,19 @@ p{
 
       #step-4 {
         background: url("../assets/motivation.png") no-repeat top center;
-
       }
-
 
       .article1 {
         flex: 1;
 
         margin-bottom: 170px;
         margin-left: -180px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: 250px;
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -1754,50 +1537,23 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
         margin-right: -130px;
-
       }
 
       .overlay {
-
         margin-top: 120px;
         background: rgba(255, 255, 255);
         height: 96%;
         width: 200px;
         padding: 15px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
       }
-
-      .article2 {
-
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 10px;
-        margin-right: 50px;
-        margin-left: 100px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        height: 200px;
-        display: flex;
-        padding-right: 30px;
-        margin-top: 60px;
-      }
-
 
       .login {
         padding: 60px 0;
@@ -1812,7 +1568,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -1837,7 +1592,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -1846,7 +1600,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -1858,11 +1611,8 @@ p{
 
       .create-account-link:hover {
         text-decoration: underline;
-
       }
-
     }
-
 
     @media (min-width: 1200px) and (max-width: 1384px) {
 
@@ -1888,7 +1638,6 @@ p{
       .overlay {
         font-size: 7px;
       }
-
 
       #main-image {
         height: 730px;
@@ -1929,7 +1678,6 @@ p{
       #steps ul {
         margin: 60px 0 0 -15px;
         list-style-type: none;
-
       }
 
       #steps ul li {
@@ -1941,7 +1689,6 @@ p{
       }
 
       #steps h4 {
-
         text-transform: uppercase;
         margin-top: -50px;
       }
@@ -1957,7 +1704,6 @@ p{
 
 
       #step-1 {
-
         background: url("../assets/haltere2.png") no-repeat top center;
       }
 
@@ -1974,19 +1720,17 @@ p{
 
       }
 
-
       .article1 {
         flex: 1;
 
         margin-bottom: 170px;
         margin-left: -120px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: 300px;
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -2002,17 +1746,13 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
         margin-right: -130px;
-
       }
 
       .overlay {
-
         margin-top: 120px;
         background: rgba(255, 255, 255);
         height: 96%;
@@ -2024,28 +1764,6 @@ p{
       .article1 .overlay p {
         text-align: left;
       }
-
-      .article2 {
-
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 20px;
-        margin-top: 10px;
-        margin-right: 50px;
-        margin-left: 100px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        height: 300px;
-        display: flex;
-        padding-right: 30px;
-        margin-top: 60px;
-      }
-
 
       .login {
         padding: 60px 0;
@@ -2060,7 +1778,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -2085,7 +1802,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -2094,7 +1810,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -2106,12 +1821,8 @@ p{
 
       .create-account-link:hover {
         text-decoration: underline;
-
       }
-
     }
-
-
 
     @media (min-width: 1385px) and (max-width: 1569px) {
 
@@ -2137,7 +1848,6 @@ p{
       .overlay {
         font-size: 7px;
       }
-
 
       #main-image {
         height: 570px;
@@ -2175,11 +1885,9 @@ p{
         background: #f4d03f
       }
 
-
       #steps ul {
         margin: 60px 0 0 45px;
         list-style-type: none; /* Supprime les puces */
-
       }
 
       #steps ul li {
@@ -2191,7 +1899,6 @@ p{
       }
 
       #steps h4 {
-
         text-transform: uppercase;
         margin-top: -50px;
       }
@@ -2205,9 +1912,7 @@ p{
         background-size: 75px 75px !important; /* Force l'application de cette règle */
       }
 
-
       #step-1 {
-
         background: url("../assets/haltere2.png") no-repeat top center;
       }
 
@@ -2224,19 +1929,17 @@ p{
 
       }
 
-
       .article1 {
         flex: 1;
 
         margin-bottom: 170px;
         margin-left: -120px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: 300px;
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -2252,13 +1955,10 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
         margin-right: 35px;
-
       }
 
       .overlay {
@@ -2268,33 +1968,11 @@ p{
         height: 96%;
         width: 200px;
         padding: 15px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
         margin-top: 20px;
-      }
-
-      .article2 {
-
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 22px;
-        margin-top: 10px;
-        margin-right: 200px;
-        margin-left: -100px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        height: 300px;
-        display: flex;
-        padding-right: 30px;
-        margin-top: -5px;
       }
 
       .login {
@@ -2310,7 +1988,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -2336,7 +2013,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -2345,7 +2021,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -2357,9 +2032,7 @@ p{
 
       .create-account-link:hover {
         text-decoration: underline;
-
       }
-
     }
 
     @media (min-width: 1570px) and (max-width: 1779px) {
@@ -2386,7 +2059,6 @@ p{
       .overlay {
         font-size: 7px;
       }
-
 
       #main-image {
         height: 730px;
@@ -2427,7 +2099,6 @@ p{
       #steps ul {
         margin: 60px 0 0 120px;
         list-style-type: none;
-
       }
 
       #steps ul li {
@@ -2451,9 +2122,7 @@ p{
         background-size: 75px 75px !important;
       }
 
-
       #step-1 {
-
         background: url("../assets/haltere2.png") no-repeat top center;
       }
 
@@ -2467,21 +2136,18 @@ p{
 
       #step-4 {
         background: url("../assets/motivation.png") no-repeat top center;
-
       }
-
 
       .article1 {
         flex: 1;
         margin-bottom: 80px;
         margin-left: -120px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: contain;
         height: 200px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -2497,8 +2163,6 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
@@ -2510,34 +2174,11 @@ p{
         height: 100%;
         width: 200px;
         padding: 20px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
       }
-
-      .article2 {
-
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 22px;
-        margin-top: 140px;
-        margin-right: 200px;
-        margin-left: -150px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        height: 300px;
-        display: flex;
-        padding-left: -50px;
-        margin-top: -250px;
-      }
-
 
       .login {
         padding: 60px 0;
@@ -2552,7 +2193,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -2577,7 +2217,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -2586,7 +2225,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -2598,9 +2236,7 @@ p{
 
       .create-account-link:hover {
         text-decoration: underline;
-
       }
-
     }
 
     @media (min-width: 1780px) and (max-width: 2000px) {
@@ -2627,7 +2263,6 @@ p{
       .overlay {
         font-size: 7px;
       }
-
 
       #main-image {
         height: 730px;
@@ -2664,11 +2299,9 @@ p{
         background: #f4d03f
       }
 
-
       #steps ul {
         margin: 60px 0 0 140px;
         list-style-type: none;
-
       }
 
       #steps ul li {
@@ -2691,9 +2324,7 @@ p{
       #step-1, #step-2, #step-3, #step-4 {
         background-size: 75px 75px !important;
 
-
         #step-1 {
-
           background: url("../assets/haltere2.png") no-repeat top center;
         }
 
@@ -2707,21 +2338,18 @@ p{
 
         #step-4 {
           background: url("../assets/motivation.png") no-repeat top center;
-
         }
-
       }
 
       .article1 {
         flex: 1;
         margin-left: -120px;
-        background-image: url("../assets/entraineur2.png");
+        background-image: url("../assets/coach1.jpg");
         background-size: contain;
         height: 200px;
         background-repeat: no-repeat;
         background-position: center;
       }
-
 
       #steps2 {
         align-items: center;
@@ -2737,8 +2365,6 @@ p{
         width: 460px;
         height: 320px;
         float: left;
-
-
       }
 
       #steps2 article:first-child {
@@ -2757,27 +2383,6 @@ p{
         text-align: left;
       }
 
-      .article2 {
-        flex: 1;
-      }
-
-      .article2 p {
-        font-weight: bold;
-        font-size: 22px;
-        margin-top: 100px;
-        margin-right: 90px;
-        margin-left: -55px;
-        line-height: 1.5;
-      }
-
-      .article2 img {
-        height: 350px;
-        display: flex;
-        padding-left: 150px;
-        margin-top: -250px;
-      }
-
-
       .login {
         padding: 60px 0;
         text-align: center;
@@ -2791,7 +2396,6 @@ p{
         border: 1px solid #ccc;
         border-radius: 10px;
       }
-
 
       .form-group {
         margin-bottom: 20px;
@@ -2816,7 +2420,6 @@ p{
         font-weight: bold;
       }
 
-
       .forgot-password-link {
         text-decoration: none;
         color: black;
@@ -2825,7 +2428,6 @@ p{
 
       .forgot-password-link:hover {
         text-decoration: underline;
-
       }
 
       .create-account-link {
@@ -2839,7 +2441,6 @@ p{
         text-decoration: underline;
 
       }
-
     }
   }
 }
