@@ -20,7 +20,7 @@
         <span style="margin-left: 5px;font-family: 'Crete Round', sans-serif;font-size: 25px ">SportFirst <span style="color: #FFD700;font-size:40px">.</span></span>
         <div class="nav-links">
           <router-link to="/" class="nav-link" @click="scrollToSteps2">Qui suis-je?</router-link>
-          <router-link to="/pricing" class="nav-link">Tarifs</router-link>
+          <router-link to="/" class="nav-link" @click="scrollToPricing">Tarifs</router-link>
           <router-link to="/" class="nav-link" @click="scrollToLoginForm">Se connecter</router-link>
         </div>
       </header>
@@ -110,9 +110,6 @@
       isSessionPage() {
         return this.$route.name === 'Session';
       },
-      isPricingCoursePage() {
-        return this.$route.name === 'PricingCourse';
-      },
     },
     mounted() {
       this.handleResize();
@@ -149,6 +146,12 @@
       },
       scrollToSteps2() {
         const element = document.getElementById('steps2');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      },
+      scrollToPricing() {
+        const element = document.getElementById('pricing');
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }

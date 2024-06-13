@@ -33,6 +33,44 @@
     </div>
   </section>
 
+  <section id="pricing">
+    <div id="pricing-page">
+      <div class="pricing-header">
+        <h1>Choisissez Votre Forfait</h1>
+        <p>Des séances de coaching personnalisées pour atteindre vos objectifs.</p>
+      </div>
+
+      <div class="pricing-container">
+        <div class="pricing-card" id="hourly-plan">
+          <h2>Session Individuelle</h2>
+          <p class="price">80€<span>/heure</span></p>
+          <ul class="features">
+            <li>Coaching sur mesure</li>
+            <li>Conseils nutritionnels</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card" id="package-plan">
+          <h2>Forfait 5 Séances</h2>
+          <p class="price">375€<span>/forfait</span></p>
+          <ul class="features">
+            <li>5 sessions personnalisées</li>
+            <li>Suivi des progrès</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card" id="ten-sessions-plan">
+          <h2>Forfait 10 Séances</h2>
+          <p class="price">700€<span>/forfait</span></p>
+          <ul class="features">
+            <li>10 sessions + suivi complet</li>
+            <li>Support étendu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="login" id="login-form">
     <div class="wrapper">
       <div v-if="loginError" class="alert alert-danger">{{ loginError }}</div>
@@ -261,6 +299,62 @@ p{
   text-align: left;
 }
 
+#pricing-page {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.pricing-header h1 {
+  font-size: 2.5em;
+  margin-top: 60px;
+}
+
+.pricing-header p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: -5px;
+}
+
+.pricing-card {
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.pricing-card h2 {
+  color: #333;
+  font-size: 1.8em;
+}
+
+.price {
+  font-size: 2.5em;
+  margin: 20px 0;
+}
+
+.price span {
+  font-size: 1em;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.features li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
 .login {
   padding: 60px 0;
   text-align: center;
@@ -327,13 +421,15 @@ p{
 }
 
 .toggle-password {
-  position: absolute;
+  /* position: absolute; */
   cursor: pointer;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* right: 10px; */
+  /* top: 50%; */
+  /* transform: translateY(-0%);  */
+  margin-left: 390px;
 }
 
+/* Responsive design 280px-319px*/
 @media (min-width:280px) and (max-width:319px) {
 
   small {
@@ -426,7 +522,6 @@ p{
     background-size: 70px 70px !important; /* Force l'application de cette règle */
   }
 
-
   #step-1 {
     background: url("../assets/haltere2.png") no-repeat top center;
   }
@@ -445,7 +540,6 @@ p{
 
   .article1 {
     flex:1;
-
     margin-bottom: 250px;
     margin-left: -260px;
     background-image: url("../assets/coach1.jpg");
@@ -485,6 +579,11 @@ p{
 
   .article1 .overlay p {
     text-align: left;
+  }
+
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
   }
 
   .login {
@@ -548,7 +647,7 @@ p{
 }
 
 
-
+/* Responsive design 320px-479px */
 @media (min-width:320px) and (max-width:479px) {
   /*general*/
   small {
@@ -601,7 +700,6 @@ p{
     color: #000000;
     font-size: 15px;
     margin: -250px auto;
-
     line-height: 50px;
     text-align: center;
     border-radius: 5px;
@@ -660,7 +758,6 @@ p{
 
   .article1 {
     flex:1;
-
     margin-bottom: 250px;
     margin-left: -240px;
     background-image: url("../assets/coach1.jpg");
@@ -700,7 +797,11 @@ p{
 
   .article1 .overlay p {
     text-align: left;
+  }
 
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
   }
 
   /*login*/
@@ -717,7 +818,6 @@ p{
     border: 1px solid #ccc;
     border-radius: 10px;
   }
-
 
   .form-group {
     margin-bottom: 20px;
@@ -742,7 +842,6 @@ p{
     font-weight: bold;
   }
 
-
   .forgot-password-link {
     text-decoration: none;
     color: black;
@@ -751,7 +850,6 @@ p{
 
   .forgot-password-link:hover {
     text-decoration: underline;
-
   }
 
   .create-account-link {
@@ -767,7 +865,7 @@ p{
 }
 
 
-
+/* Responsive design 480px-729px */
 @media (min-width:480px) and (max-width:729px) {
 
   small {
@@ -796,7 +894,6 @@ p{
   .overlay {
     font-size: 7px;
   }
-
 
   #main-image {
     height: 650px;
@@ -879,7 +976,6 @@ p{
 
   .article1 {
     flex: 1;
-
     margin-bottom: 200px;
     margin-left: -180px;
     background-image: url("../assets/coach1.jpg");
@@ -919,6 +1015,11 @@ p{
 
   .article1 .overlay p {
     text-align: left;
+  }
+
+  .pricing-container {
+    flex-direction: column;
+    align-items: center;
   }
 
   .login {
@@ -979,7 +1080,7 @@ p{
     }
   }
 
-
+  /* Responsive design 730px-859px*/
   @media (min-width: 730px) and (max-width: 859px) {
 
     small {
@@ -1009,7 +1110,6 @@ p{
       font-size: 7px;
     }
 
-
     #main-image {
       height: 650px;
       background: url('../assets/background2.jpg') center center no-repeat;
@@ -1033,7 +1133,6 @@ p{
       color: #000000;
       font-size: 15px;
       margin: -60px auto;
-
       line-height: 50px;
       text-align: center;
       border-radius: 5px;
@@ -1091,7 +1190,6 @@ p{
 
     .article1 {
       flex: 1;
-
       margin-bottom: -90px;
       margin-left: -180px;
       background-image: url("../assets/coach1.jpg");
@@ -1131,6 +1229,11 @@ p{
 
     .article1 .overlay p {
       text-align: left;
+    }
+
+    .pricing-container {
+      flex-direction: column;
+      align-items: center;
     }
 
     .login {
@@ -1193,7 +1296,7 @@ p{
   }
 
 
-
+  /* Responsive design 860px-999px */
   @media (min-width: 860px) and (max-width: 999px) {
 
     small {
@@ -1303,7 +1406,6 @@ p{
 
       .article1 {
         flex: 1;
-
         margin-bottom: 190px;
         margin-left: -180px;
         background-image: url("../assets/coach1.jpg");
@@ -1343,6 +1445,11 @@ p{
 
       .article1 .overlay p {
         text-align: left;
+      }
+      
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
 
       /*login*/
@@ -1405,7 +1512,7 @@ p{
       }
     }
 
-
+    /* Responsive design 1000px-1199px */
     @media (min-width: 1000px) and (max-width: 1199px) {
 
       small {
@@ -1466,7 +1573,6 @@ p{
         background: #f4d03f
       }
 
-
       #steps ul {
         margin: 60px 0 0 -45px;
         list-style-type: none;
@@ -1495,7 +1601,6 @@ p{
       }
 
       #step-1 {
-
         background: url("../assets/haltere2.png") no-repeat top center;
       }
 
@@ -1513,7 +1618,6 @@ p{
 
       .article1 {
         flex: 1;
-
         margin-bottom: 170px;
         margin-left: -180px;
         background-image: url("../assets/coach1.jpg");
@@ -1553,6 +1657,11 @@ p{
 
       .article1 .overlay p {
         text-align: left;
+      }
+
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
 
       .login {
@@ -1614,6 +1723,7 @@ p{
       }
     }
 
+    /* Responsive design 1200px-1384px */
     @media (min-width: 1200px) and (max-width: 1384px) {
 
       small {
@@ -1702,7 +1812,6 @@ p{
         background-size: 75px 75px !important;
       }
 
-
       #step-1 {
         background: url("../assets/haltere2.png") no-repeat top center;
       }
@@ -1717,12 +1826,10 @@ p{
 
       #step-4 {
         background: url("../assets/motivation.png") no-repeat top center;
-
       }
 
       .article1 {
         flex: 1;
-
         margin-bottom: 170px;
         margin-left: -120px;
         background-image: url("../assets/coach1.jpg");
@@ -1758,11 +1865,15 @@ p{
         height: 96%;
         width: 200px;
         padding: 15px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
+      }
+
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
 
       .login {
@@ -1824,6 +1935,7 @@ p{
       }
     }
 
+    /* Responsive design 1385px-1569px */
     @media (min-width: 1385px) and (max-width: 1569px) {
 
       small {
@@ -1926,12 +2038,10 @@ p{
 
       #step-4 {
         background: url("../assets/motivation.png") no-repeat top center;
-
       }
 
       .article1 {
         flex: 1;
-
         margin-bottom: 170px;
         margin-left: -120px;
         background-image: url("../assets/coach1.jpg");
@@ -1973,6 +2083,11 @@ p{
       .article1 .overlay p {
         text-align: left;
         margin-top: 20px;
+      }
+
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
 
       .login {
@@ -2035,6 +2150,7 @@ p{
       }
     }
 
+    /* Responsive design 1570px-1779px */
     @media (min-width: 1570px) and (max-width: 1779px) {
       /*general*/
       small {
@@ -2083,7 +2199,6 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
-
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -2180,6 +2295,11 @@ p{
         text-align: left;
       }
 
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .login {
         padding: 60px 0;
         text-align: center;
@@ -2239,6 +2359,7 @@ p{
       }
     }
 
+    /* Responsive design 1780px-2000px */
     @media (min-width: 1780px) and (max-width: 2000px) {
 
       small {
@@ -2287,7 +2408,6 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
-
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -2376,11 +2496,15 @@ p{
         height: 100%;
         width: 200px;
         padding: 20px;
-
       }
 
       .article1 .overlay p {
         text-align: left;
+      }
+
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
 
       .login {
