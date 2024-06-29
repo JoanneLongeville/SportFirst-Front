@@ -136,23 +136,24 @@ export default {
     async submitLogin() {
       try {
 
-        const response = await axios.post('http://localhost:8082/login', this.loginDetails);
+        const response = await axios.post('http://localhost:5000/login', this.loginDetails);
 
         if (response.status === 200) {
           sessionStorage.setItem('userFirstname', response.data.userFirstname);
           sessionStorage.setItem('userId', response.data.userID);
 
           this.$router.push({ name: 'Session', params: { userId: response.data.userID } });
+        } if (response.status === 401) {
+          this.loginError = "Adresse e-mail ou mot de passe incorrect.";
         } else {
-
           this.loginError = "Une erreur est survenue. Veuillez réessayer.";
         }
       } catch (error) {
         if (error.response) {
-
           this.loginError = error.response.data.error;
+        } if (error.response.status === 401) {
+          this.loginError = "Adresse e-mail ou mot de passe incorrect.";
         } else {
-
           this.loginError = "Erreur de connexion au serveur. Veuillez réessayer plus tard.";
         }
       }
