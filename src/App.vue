@@ -2,7 +2,7 @@
     <div id="app">
       <header v-if="isSessionPage" id="nav">
         <a href="/">
-          <img src="./assets/logo.png" alt="SportFirst Logo" style="height: 85px;" /></a>
+          <img src="./assets/logo.png" alt="SportFirst Logo" style="height: 70px;" /></a>
   
         <span style="margin-left: 5px;font-family: 'Crete Round', sans-serif;font-size: 25px ">SportFirst <span style="color: #FFD700;font-size:40px">.</span></span>
   
@@ -38,7 +38,7 @@
         <a href="/">
           <img src="./assets/logo.png" alt="SportFirst Logo" style="height: 70px;" /></a>
         <span style="margin-left: 5px;font-family: 'Crete Round', sans-serif;font-size: 25px ">SportFirst <span style="color: #FFD700;font-size:40px">.</span></span>
-        <div class="nav-links">
+        <div class="nav-links nav-links-right">
           <router-link to="/" class="nav-link" style="margin-right: 20px">Accueil</router-link>
         </div>
       </header>
@@ -47,8 +47,11 @@
         <a href="/">
           <img src="./assets/logo.png" alt="SportFirst Logo" style="height: 85px;" /></a>
         <span style="margin-left: -5px;font-family: 'Crete Round', sans-serif;font-size: 25px ">SportFirst <span style="color: #FFD700;font-size:40px">.</span></span>
-        <div class="nav-links">
+        <div class="nav-links nav-links-right">
           <router-link to="/session/123" class="nav-link">Retour sur votre session</router-link>
+          <router-link to="/profile-page" class="nav-link">Profil</router-link>
+          <router-link to="#" class="nav-link" @click="showReservationsPopup">Mes réservations</router-link>
+          <router-link to="/" class="nav-link" @click="logout">Se déconnecter</router-link>
         </div>
       </header>
   

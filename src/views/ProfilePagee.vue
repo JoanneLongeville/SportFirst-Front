@@ -7,66 +7,12 @@
     </div>
   </section>
 
-  <section id="steps">
+  <section class="profil" id="profil">
     <div class="wrapper">
-      <ul>
-        <li id="step-1"><h4>Coaching Personnalisé</h4><p>Programmes sur mesure pour vos objectifs et niveau.</p></li>
-        <li id="step-2"><h4>Flexibilité des Horaires</h4><p>Séances adaptées à votre emploi du temps.</p></li>
-        <li id="step-3"><h4>Suivi des Progrès</h4><p>Évaluations régulières pour mesurer vos avancées.</p></li>
-        <li id="step-4"><h4>Motivation et Soutien</h4><p>Accompagnement continu pour votre réussite.</p></li>
-        <div class="clear"></div>
-      </ul>
-    </div>
-  </section>
-
-  <section id="steps2">
-    <div class="wrapper">
-      <article class="article1">
-        <div class="overlay">
-          <p>
-            <small>Je suis Jonathan, votre entraîneur sportif. <br>Diplômé en sciences du sport et certifié en coaching et nutrition sportive,<br>Je vous offre des conseils personnalisés pour vous aider à atteindre vos objectifs.
-            </small></p>
-        </div>
-      </article>
-      <div class="clear"></div>
-    </div>
-  </section>
-
-  <section id="pricing">
-    <div id="pricing-page">
-      <div class="pricing-header">
-        <h1>Choisissez Votre Forfait</h1>
-        <p>Des séances de coaching personnalisées pour atteindre vos objectifs.</p>
-      </div>
-
-      <div class="pricing-container">
-        <div class="pricing-card" id="hourly-plan">
-          <h2>Session Individuelle</h2>
-          <p class="price">80€<span>/heure</span></p>
-          <ul class="features">
-            <li>Coaching sur mesure</li>
-            <li>Conseils nutritionnels</li>
-          </ul>
-        </div>
-
-        <div class="pricing-card" id="package-plan">
-          <h2>Forfait 5 Séances</h2>
-          <p class="price">375€<span>/forfait</span></p>
-          <ul class="features">
-            <li>5 sessions personnalisées</li>
-            <li>Suivi des progrès</li>
-          </ul>
-        </div>
-
-        <div class="pricing-card" id="ten-sessions-plan">
-          <h2>Forfait 10 Séances</h2>
-          <p class="price">700€<span>/forfait</span></p>
-          <ul class="features">
-            <li>10 sessions + suivi complet</li>
-            <li>Support étendu</li>
-          </ul>
-        </div>
-      </div>
+      <h2>Profil</h2>
+      <p>Nom + Prénom</p>
+      <p>Vous êtes un particulier et vous souhaitez bénéficier de nos services ?</p>
+      <p>Créez votre compte dès maintenant et commencez votre aventure avec SportFirst.</p>
     </div>
   </section>
 
@@ -134,22 +80,24 @@ export default {
   methods: {
     async submitLogin() {
       try {
+
         const response = await axios.post('http://localhost:5000/login', this.loginDetails);
+
         if (response.status === 200) {
           sessionStorage.setItem('userFirstname', response.data.userFirstname);
           sessionStorage.setItem('userId', response.data.userID);
-          this.$router.push({ name: 'Session', params: { userId: response.data.userID } });
-        } if (response.status === 401) {
-          this.loginError = "Adresse e-mail ou mot de passe incorrect.";
+
+          this.$router.push({ name: 'ProfilePage', params: { userId: response.data.userID } });
         } else {
+
           this.loginError = "Une erreur est survenue. Veuillez réessayer.";
         }
       } catch (error) {
         if (error.response) {
+
           this.loginError = error.response.data.error;
-        } if (error.response.status === 401) {
-          this.loginError = "Adresse e-mail ou mot de passe incorrect.";
         } else {
+
           this.loginError = "Erreur de connexion au serveur. Veuillez réessayer plus tard.";
         }
       }
@@ -214,55 +162,8 @@ p{
   text-decoration: none;
   font-weight: bold;
 }
-
 .btn-inscrivez-vous:hover{
   background:  #f4d03f
-}
-
-.btn:hover{
-  background:  #f4d03f
-}
-
-#steps ul{
-  margin: 20px 0 0 39px;
-  list-style-type: none;
-}
-
-#steps ul li{
-  width: 300px;
-  float: left;
-  padding-top: 140px;
-  text-align: center;
-  margin-right: 160px;
-}
-
-#steps h4{
-  text-transform: uppercase;
-  margin-top: -50px;
-}
-
-#steps p {
-  margin-bottom: 20px;
-}
-
-#step-1, #step-2, #step-3, #step-4 {
-  background-size: 75px 75px !important;
-}
-
-#step-1{
-  background: url("../assets/haltere2.png") no-repeat top center;
-}
-
-#step-2{
-  background: url("../assets/horloge.png") no-repeat top  center;
-}
-
-#step-3{
-  background: url("../assets/performance.png") no-repeat top center;
-}
-
-#step-4{
-  background: url("../assets/motivation.png") no-repeat top center;
 }
 
 .article1{
@@ -271,23 +172,6 @@ p{
   height: 500px;
   background-repeat: no-repeat;
   background-position: right;
-}
-
-#steps2{
-  background-color: #efefef;
-  padding:80px 0 0 250px;
-  margin: 20px 0;
-  height: 500px;
-}
-
-#steps2 article{
-  width: 460px;
-  height:320px ;
-  float: left;
-}
-
-#steps2 article:first-child{
-  margin-right: 200px;
 }
 
 .overlay{
@@ -299,42 +183,6 @@ p{
 
 .article1 .overlay p{
   text-align: left;
-}
-
-#pricing-page {
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.pricing-header h1 {
-  font-size: 2.5em;
-  margin-top: 60px;
-}
-
-.pricing-header p {
-  font-size: 1.2em;
-  color: #666;
-}
-
-.pricing-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: -5px;
-}
-
-.pricing-card {
-  background: #f7f7f7;
-  border-radius: 10px;
-  padding: 20px;
-  width: 300px;
-  height: 200px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.pricing-card h2 {
-  color: #333;
-  font-size: 1.8em;
 }
 
 .price {
@@ -370,6 +218,7 @@ p{
   border: 1px solid #ccc;
   border-radius: 10px;
 }
+
 
 .form-group {
   margin-bottom: 20px;
@@ -483,6 +332,7 @@ p{
     color: #000000;
     font-size: 15px;
     margin: -250px auto;
+
     line-height: 50px;
     text-align: center;
     border-radius: 5px;
@@ -492,50 +342,6 @@ p{
 
   .btn-inscrivez-vous:hover {
     background: #f4d03f
-  }
-
-  #steps ul {
-    margin: 60px 0 0 -34px;
-    list-style-type: none; /* Supprime les puces */
-  }
-
-  #steps ul li {
-    width: 300px;
-    float: left;
-    padding-left: 30px;
-    padding-top: 140px;
-    text-align: center;
-    margin-left:-25px;
-  }
-
-  #steps h4 {
-    text-transform: uppercase;
-    margin-top: -50px;
-  }
-
-  #steps p {
-    font-size: 10px;
-    margin-bottom: 20px;
-  }
-
-  #step-1, #step-2, #step-3, #step-4 {
-    background-size: 70px 70px !important; /* Force l'application de cette règle */
-  }
-
-  #step-1 {
-    background: url("../assets/haltere2.png") no-repeat top center;
-  }
-
-  #step-2 {
-    background: url("../assets/horloge.png") no-repeat top center;
-  }
-
-  #step-3 {
-    background: url("../assets/performance.png") no-repeat top center;
-  }
-
-  #step-4 {
-    background: url("../assets/motivation.png") no-repeat top center;
   }
 
   .article1 {
@@ -549,26 +355,6 @@ p{
     background-position: center; /* Centrer l'image dans l'élément */
   }
 
-  #steps2 {
-    align-items: center; /* Centre les éléments verticalement */
-    display: flex;
-    background-color: #efefef;
-    padding: 80px 0 0 250px;
-    margin: 20px 0; /* Ajoute de l'espace autour de la section, si nécessaire */
-    height: 500px;
-  }
-
-  #steps2 article {
-    flex: 1;
-    width: 360px;
-    height: 420px;
-    float: left;
-  }
-
-  #steps2 article:first-child {
-    margin-right: -130px;
-  }
-
   .overlay {
     margin-top: 150px;
     background: rgba(255, 255, 255);
@@ -579,11 +365,6 @@ p{
 
   .article1 .overlay p {
     text-align: left;
-  }
-
-  .pricing-container {
-    flex-direction: column;
-    align-items: center;
   }
 
   .login {
@@ -631,6 +412,7 @@ p{
 
   .forgot-password-link:hover {
     text-decoration: underline;
+
   }
 
   .create-account-link {
@@ -644,6 +426,7 @@ p{
     text-decoration: underline;
   }
 }
+
 
 /* Responsive design 320px-479px */
 @media (min-width:320px) and (max-width:479px) {
@@ -709,51 +492,6 @@ p{
     background: #f4d03f
   }
 
-  /*steps*/
-  #steps ul {
-    margin: 60px 0 0 5px;
-    list-style-type: none;
-  }
-
-  #steps ul li {
-    width: 300px;
-    float: left;
-    padding-left: 30px;
-    padding-top: 140px;
-    text-align: center;
-    margin-left:-25px;
-  }
-
-  #steps h4 {
-    text-transform: uppercase;
-    margin-top: -50px;
-  }
-
-  #steps p {
-    font-size: 10px;
-    margin-bottom: 20px;
-  }
-
-  #step-1, #step-2, #step-3, #step-4 {
-    background-size: 70px 70px !important;
-  }
-
-  #step-1 {
-    background: url("../assets/haltere2.png") no-repeat top center;
-  }
-
-  #step-2 {
-    background: url("../assets/horloge.png") no-repeat top center;
-  }
-
-  #step-3 {
-    background: url("../assets/performance.png") no-repeat top center;
-  }
-
-  #step-4 {
-    background: url("../assets/motivation.png") no-repeat top center;
-  }
-
   .article1 {
     flex:1;
     margin-bottom: 250px;
@@ -763,26 +501,6 @@ p{
     height: 150px;
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  #steps2 {
-    align-items: center;
-    display: flex;
-    background-color: #efefef;
-    padding: 80px 0 0 250px;
-    margin: 20px 0;
-    height: 500px;
-  }
-
-  #steps2 article {
-    flex: 1;
-    width: 460px;
-    height: 420px;
-    float: left;
-  }
-
-  #steps2 article:first-child {
-    margin-right: -130px;
   }
 
   .overlay {
@@ -795,11 +513,6 @@ p{
 
   .article1 .overlay p {
     text-align: left;
-  }
-
-  .pricing-container {
-    flex-direction: column;
-    align-items: center;
   }
 
   /*login*/
@@ -862,6 +575,7 @@ p{
   }
 }
 
+
 /* Responsive design 480px-729px */
 @media (min-width:480px) and (max-width:729px) {
 
@@ -915,6 +629,7 @@ p{
     color: #000000;
     font-size: 15px;
     margin: -100px auto;
+
     line-height: 50px;
     text-align: center;
     border-radius: 5px;
@@ -924,50 +639,6 @@ p{
 
   .btn-inscrivez-vous:hover {
     background: #f4d03f
-  }
-
-  #steps ul {
-    margin: 60px 0 0 70px;
-    list-style-type: none; /* Supprime les puces */
-  }
-
-  #steps ul li {
-    width: 300px;
-    float: left;
-    padding-left: 30px;
-    padding-top: 140px;
-    text-align: center;
-    margin-left: -10px;
-  }
-
-  #steps h4 {
-    text-transform: uppercase;
-    margin-top: -50px;
-  }
-
-  #steps p {
-    font-size: 10px;
-    margin-bottom: 20px;
-  }
-
-  #step-1, #step-2, #step-3, #step-4 {
-    background-size: 70px 70px !important;
-  }
-
-  #step-1 {
-    background: url("../assets/haltere2.png") no-repeat top center;
-  }
-
-  #step-2 {
-    background: url("../assets/horloge.png") no-repeat top center;
-  }
-
-  #step-3 {
-    background: url("../assets/performance.png") no-repeat top center;
-  }
-
-  #step-4 {
-    background: url("../assets/motivation.png") no-repeat top center;
   }
 
   .article1 {
@@ -981,26 +652,6 @@ p{
     background-position: center;
   }
 
-  #steps2 {
-    align-items: center;
-    display: flex;
-    background-color: #efefef;
-    padding: 80px 0 0 250px;
-    margin: 20px 0;
-    height: 500px;
-  }
-
-  #steps2 article {
-    flex: 1;
-    width: 460px;
-    height: 320px;
-    float: left;
-  }
-
-  #steps2 article:first-child {
-    margin-right: -130px;
-  }
-
   .overlay {
     margin-top: 120px;
     background: rgba(255, 255, 255);
@@ -1011,11 +662,6 @@ p{
 
   .article1 .overlay p {
     text-align: left;
-  }
-
-  .pricing-container {
-    flex-direction: column;
-    align-items: center;
   }
 
   .login {
@@ -1140,50 +786,6 @@ p{
       background: #f4d03f
     }
 
-    #steps ul {
-      margin: 60px 0 0 -10px;
-      list-style-type: none;
-    }
-
-    #steps ul li {
-      width: 300px;
-      float: left;
-      padding-left: 30px;
-      padding-top: 140px;
-      text-align: center;
-      margin-right: 50px;
-    }
-
-    #steps h4 {
-      text-transform: uppercase;
-      margin-top: -50px;
-    }
-
-    #steps p {
-      font-size: 10px;
-      margin-bottom: 20px;
-    }
-
-    #step-1, #step-2, #step-3, #step-4 {
-      background-size: 70px 70px !important; /* Force l'application de cette règle */
-    }
-
-    #step-1 {
-      background: url("../assets/haltere2.png") no-repeat top center;
-    }
-
-    #step-2 {
-      background: url("../assets/horloge.png") no-repeat top center;
-    }
-
-    #step-3 {
-      background: url("../assets/performance.png") no-repeat top center;
-    }
-
-    #step-4 {
-      background: url("../assets/motivation.png") no-repeat top center;
-    }
-
     .article1 {
       flex: 1;
       margin-bottom: -90px;
@@ -1193,26 +795,6 @@ p{
       height: 150px;
       background-repeat: no-repeat;
       background-position: center; /* Centrer l'image dans l'élément */
-    }
-
-    #steps2 {
-      align-items: center; /* Centre les éléments verticalement */
-      display: flex;
-      background-color: #efefef;
-      padding: 80px 0 0 250px;
-      margin: 20px 0; /* Ajoute de l'espace autour de la section, si nécessaire */
-      height: 500px;
-    }
-
-    #steps2 article {
-      flex: 1;
-      width: 460px;
-      height: 320px;
-      float: left;
-    }
-
-    #steps2 article:first-child {
-      margin-right: -130px;
     }
 
     .overlay {
@@ -1225,11 +807,6 @@ p{
 
     .article1 .overlay p {
       text-align: left;
-    }
-
-    .pricing-container {
-      flex-direction: column;
-      align-items: center;
     }
 
     .login {
@@ -1290,6 +867,7 @@ p{
       text-decoration: underline;
     }
   }
+
 
   /* Responsive design 860px-999px */
   @media (min-width: 860px) and (max-width: 999px) {
@@ -1356,49 +934,6 @@ p{
       background: #f4d03f
     }
 
-    #steps ul {
-      margin: 60px 0 0 90px;
-      list-style-type: none;
-    }
-
-    #steps ul li {
-      width: 300px;
-      float: left;
-      padding-left: 30px;
-      padding-top: 140px;
-      text-align: center;
-      margin-right: 50px;
-    }
-
-    #steps h4 {
-      text-transform: uppercase;
-      margin-top: -50px;
-    }
-
-    #steps p {
-      font-size: 10px;
-      margin-bottom: 20px;
-    }
-
-    #step-1, #step-2, #step-3, #step-4 {
-      background-size: 70px 70px !important;
-
-      #step-1 {
-        background: url("../assets/haltere2.png") no-repeat top center;
-      }
-
-      #step-2 {
-        background: url("../assets/horloge.png") no-repeat top center;
-      }
-
-      #step-3 {
-        background: url("../assets/performance.png") no-repeat top center;
-      }
-
-      #step-4 {
-        background: url("../assets/motivation.png") no-repeat top center;
-      }
-
       .article1 {
         flex: 1;
         margin-bottom: 190px;
@@ -1408,26 +943,6 @@ p{
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
-      }
-
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: -130px;
       }
 
       .overlay {
@@ -1442,11 +957,6 @@ p{
         text-align: left;
       }
       
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
       /*login*/
       .login {
         padding: 60px 0;
@@ -1568,49 +1078,6 @@ p{
         background: #f4d03f
       }
 
-      #steps ul {
-        margin: 60px 0 0 -45px;
-        list-style-type: none;
-      }
-
-      #steps ul li {
-        width: 300px;
-        float: left;
-        padding-top: 140px;
-        text-align: center;
-        margin-right: -50px;
-      }
-
-      #steps h4 {
-        text-transform: uppercase;
-        margin-top: -50px;
-      }
-
-      #steps p {
-        font-size: 10px;
-        margin-bottom: 20px;
-      }
-
-      #step-1, #step-2, #step-3, #step-4 {
-        background-size: 65px 65px !important;
-      }
-
-      #step-1 {
-        background: url("../assets/haltere2.png") no-repeat top center;
-      }
-
-      #step-2 {
-        background: url("../assets/horloge.png") no-repeat top center;
-      }
-
-      #step-3 {
-        background: url("../assets/performance.png") no-repeat top center;
-      }
-
-      #step-4 {
-        background: url("../assets/motivation.png") no-repeat top center;
-      }
-
       .article1 {
         flex: 1;
         margin-bottom: 170px;
@@ -1620,26 +1087,6 @@ p{
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
-      }
-
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: -130px;
       }
 
       .overlay {
@@ -1652,11 +1099,6 @@ p{
 
       .article1 .overlay p {
         text-align: left;
-      }
-
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
       }
 
       .login {
@@ -1767,6 +1209,7 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
+
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -1776,50 +1219,6 @@ p{
 
       .btn-inscrivez-vous:hover {
         background: #f4d03f
-      }
-
-      /*steps*/
-      #steps ul {
-        margin: 60px 0 0 -15px;
-        list-style-type: none;
-      }
-
-      #steps ul li {
-        width: 300px;
-        float: left;
-        padding-top: 140px;
-        text-align: center;
-        margin-right: -10px;
-      }
-
-      #steps h4 {
-        text-transform: uppercase;
-        margin-top: -50px;
-      }
-
-      #steps p {
-        font-size: 12px;
-        margin-bottom: 20px;
-      }
-
-      #step-1, #step-2, #step-3, #step-4 {
-        background-size: 75px 75px !important;
-      }
-
-      #step-1 {
-        background: url("../assets/haltere2.png") no-repeat top center;
-      }
-
-      #step-2 {
-        background: url("../assets/horloge.png") no-repeat top center;
-      }
-
-      #step-3 {
-        background: url("../assets/performance.png") no-repeat top center;
-      }
-
-      #step-4 {
-        background: url("../assets/motivation.png") no-repeat top center;
       }
 
       .article1 {
@@ -1833,26 +1232,6 @@ p{
         background-position: center;
       }
 
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: -130px;
-      }
-
       .overlay {
         margin-top: 120px;
         background: rgba(255, 255, 255);
@@ -1863,11 +1242,6 @@ p{
 
       .article1 .overlay p {
         text-align: left;
-      }
-
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
       }
 
       .login {
@@ -1979,6 +1353,7 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
+
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -1990,49 +1365,6 @@ p{
         background: #f4d03f
       }
 
-      #steps ul {
-        margin: 60px 0 0 45px;
-        list-style-type: none; /* Supprime les puces */
-      }
-
-      #steps ul li {
-        width: 300px;
-        float: left;
-        padding-top: 130px;
-        text-align: center;
-        margin-right: 30px;
-      }
-
-      #steps h4 {
-        text-transform: uppercase;
-        margin-top: -50px;
-      }
-
-      #steps p {
-        font-size: 12px;
-        margin-bottom: 20px;
-      }
-
-      #step-1, #step-2, #step-3, #step-4 {
-        background-size: 75px 75px !important; /* Force l'application de cette règle */
-      }
-
-      #step-1 {
-        background: url("../assets/haltere2.png") no-repeat top center;
-      }
-
-      #step-2 {
-        background: url("../assets/horloge.png") no-repeat top center;
-      }
-
-      #step-3 {
-        background: url("../assets/performance.png") no-repeat top center;
-      }
-
-      #step-4 {
-        background: url("../assets/motivation.png") no-repeat top center;
-      }
-
       .article1 {
         flex: 1;
         margin-bottom: 170px;
@@ -2042,26 +1374,6 @@ p{
         height: 150px;
         background-repeat: no-repeat;
         background-position: center;
-      }
-
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: 35px;
       }
 
       .overlay {
@@ -2076,11 +1388,6 @@ p{
       .article1 .overlay p {
         text-align: left;
         margin-top: 20px;
-      }
-
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
       }
 
       .login {
@@ -2203,49 +1510,6 @@ p{
         background: #f4d03f
       }
 
-      /*steps*/
-      #steps ul {
-        margin: 60px 0 0 120px;
-        list-style-type: none;
-      }
-
-      #steps ul li {
-        width: 300px;
-        float: left;
-        padding-top: 140px;
-        text-align: center;
-        margin-right: 30px;
-      }
-
-      #steps h4 {
-        text-transform: uppercase;
-        margin-top: -50px;
-      }
-
-      #steps p {
-        margin-bottom: 20px;
-      }
-
-      #step-1, #step-2, #step-3, #step-4 {
-        background-size: 75px 75px !important;
-      }
-
-      #step-1 {
-        background: url("../assets/haltere2.png") no-repeat top center;
-      }
-
-      #step-2 {
-        background: url("../assets/horloge.png") no-repeat top center;
-      }
-
-      #step-3 {
-        background: url("../assets/performance.png") no-repeat top center;
-      }
-
-      #step-4 {
-        background: url("../assets/motivation.png") no-repeat top center;
-      }
-
       .article1 {
         flex: 1;
         margin-bottom: 80px;
@@ -2257,26 +1521,6 @@ p{
         background-position: center;
       }
 
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: 150px;
-      }
-
       .overlay {
         background: rgba(255, 255, 255);
         height: 100%;
@@ -2286,11 +1530,6 @@ p{
 
       .article1 .overlay p {
         text-align: left;
-      }
-
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
       }
 
       .login {
@@ -2412,48 +1651,6 @@ p{
         background: #f4d03f
       }
 
-      #steps ul {
-        margin: 60px 0 0 140px;
-        list-style-type: none;
-      }
-
-      #steps ul li {
-        width: 300px;
-        float: left;
-        padding-top: 140px;
-        text-align: center;
-        margin-right: 100px;
-      }
-
-      #steps h4 {
-        text-transform: uppercase;
-        margin-top: -50px;
-      }
-
-      #steps p {
-        margin-bottom: 20px;
-      }
-
-      #step-1, #step-2, #step-3, #step-4 {
-        background-size: 75px 75px !important;
-
-        #step-1 {
-          background: url("../assets/haltere2.png") no-repeat top center;
-        }
-
-        #step-2 {
-          background: url("../assets/horloge.png") no-repeat top center;
-        }
-
-        #step-3 {
-          background: url("../assets/performance.png") no-repeat top center;
-        }
-
-        #step-4 {
-          background: url("../assets/motivation.png") no-repeat top center;
-        }
-      }
-
       .article1 {
         flex: 1;
         margin-left: -120px;
@@ -2462,26 +1659,6 @@ p{
         height: 200px;
         background-repeat: no-repeat;
         background-position: center;
-      }
-
-      #steps2 {
-        align-items: center;
-        display: flex;
-        background-color: #efefef;
-        padding: 80px 0 0 250px;
-        margin: 20px 0;
-        height: 500px;
-      }
-
-      #steps2 article {
-        flex: 1;
-        width: 460px;
-        height: 320px;
-        float: left;
-      }
-
-      #steps2 article:first-child {
-        margin-right: 200px;
       }
 
       .overlay {
@@ -2493,11 +1670,6 @@ p{
 
       .article1 .overlay p {
         text-align: left;
-      }
-
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
       }
 
       .login {
@@ -2560,6 +1732,7 @@ p{
       }
     }
   }
-}
 
 </style>
+
+

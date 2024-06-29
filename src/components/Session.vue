@@ -1,4 +1,5 @@
 <template>
+
   <div class="menu-toggle">
     <h2 class="welcome-message">Bienvenue {{ userProfile.firstname }}</h2>
     <span class="menu-icon" @click="toggleMenu()"><i class="fas fa-bars"></i></span>
@@ -20,12 +21,19 @@
 
     </div>
   </div>
-  <div class="flex-container">
-    <div class="comments-section">
-      <img src="../assets/femme4.jpg" alt="femme avec des altéres" class="comment-image">
 
-      <textarea placeholder="Ajoutez votre commentaire..."></textarea>
-      <button class="btn btn-primary">Soumettre le Commentaire</button>
+  <div class="flex-container">
+
+    <div class="infos-container">
+      <div class="infos">
+        <h3>Informations</h3>
+        <p> Prénom : {{ userProfile.firstname }}</p>
+        <p> Nom : {{ userProfile.lastname }}</p>
+        <p> Téléphone : {{ userProfile.phone }}</p>
+        <p> Email : {{ userProfile.email }}</p>
+        <button class="btn btn-infos" @click="showModal = true">Modifier</button>
+
+      </div>
     </div>
 
     <div class="content-container">
@@ -62,7 +70,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
-
 
 export default {
   name: 'UserSession',
@@ -109,7 +116,7 @@ export default {
         eventBackgroundColor: '#228B22',
 
         eventTextColor: '#FFFFFF',
-        events: this.getAvailableSlots(),
+        //events: this.getAvailableSlots(),
         eventClick: this.handleEventClick,
         select: this.handleDateSelect,
         // ...autres options...
@@ -119,7 +126,10 @@ export default {
   },
 
   created() {
-    this.userProfile.firstname = sessionStorage.getItem('userFirstname') || 'Invité';
+    this.userProfile.firstname = sessionStorage.getItem('userFirstname') || 'Prénom';
+    this.userProfile.lastname = sessionStorage.getItem('userLastname') || 'Nom';
+    this.userProfile.phone = sessionStorage.getItem('userPhone') || 'Téléphone';
+    this.userProfile.email = sessionStorage.getItem('userEmail') || 'E-mail';
   },
 
   methods: {
@@ -197,18 +207,16 @@ export default {
   }
 };
 </script>
-<style scoped>
 
+
+<style scoped>
 
 .menu-list li {
   list-style: none;
-
   margin-bottom: 15px;
 }
 
-
 .menu-list i {
-
   margin-right: 10px;
 }
 
@@ -244,7 +252,6 @@ export default {
   overflow-y: auto;
 }
 
-
 .show-menu {
   display: block;
 }
@@ -256,9 +263,16 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   color: white;
+  font-size:15px;
 }
 
+.btn-primary:hover{
+  background:  #f4d03f
+}
 
+.btn-secondary:hover{
+  background:  #000000
+}
 
 .menu-icon {
   margin-right: 80px;
@@ -268,17 +282,24 @@ export default {
   font-size: 30px;
 }
 
-
 .btn-secondary {
   margin-left: 50px;
+  margin-top: 15px;
   background-color: #6c757d;
 }
 
 .btn-primary {
   background-color: #f2e52e;
+  color:#000000;
   margin-top: 15px;
+  margin-left: 50px;
 }
-
+.btn-infos {
+  background-color: #f2e52e;
+  color:#000000;
+  margin-top: 15px;
+  margin-left: 330px;
+}
 
 .welcome-message {
   text-align: center;
@@ -292,14 +313,12 @@ export default {
   flex-grow: 1;
 }
 
-
 .flex-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 20px;
 }
-
 
 .comments-section {
   flex: 1;
@@ -312,7 +331,6 @@ export default {
 }
 
 .comments-section .comment-image {
-
   width: 75%;
   max-width: 600px;
   height: auto;
@@ -332,7 +350,6 @@ export default {
   background-color: white;
 }
 
-
 .content-container {
   flex: 1;
   display: flex;
@@ -347,6 +364,33 @@ export default {
   height: 650px;
 }
 
+.infos-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 50%;
+  height: 650px;
+}
+
+.infos {
+  text-align: center;
+  width: 85%;
+  margin: auto;
+}
+
+.infos h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #261416;
+  margin-bottom: 20px;
+  padding: 10px;
+}
 
 .custom-calendar {
   height: 500px;
@@ -369,7 +413,6 @@ export default {
   padding: 10px;
 }
 
-
 .modal {
   position: fixed;
   left: 50%;
@@ -390,13 +433,12 @@ export default {
   padding: 10px;
 }
 
-
 @media (max-width: 768px) {
   .flex-container {
     flex-direction: column;
   }
 
-  .comments-section, .content-container {
+  .comments-section, .infos-container, .content-container {
     width: 100%;
     max-width: 100%;
     margin: 10px 0;
@@ -408,6 +450,10 @@ export default {
   }
 
   .comments-section textarea {
+    width: 100%;
+  }
+
+  .infos {
     width: 100%;
   }
 
