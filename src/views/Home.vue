@@ -7,7 +7,6 @@
     </div>
   </section>
 
-
   <section id="steps">
     <div class="wrapper">
       <ul>
@@ -135,13 +134,10 @@ export default {
   methods: {
     async submitLogin() {
       try {
-
         const response = await axios.post('http://localhost:5000/login', this.loginDetails);
-
         if (response.status === 200) {
           sessionStorage.setItem('userFirstname', response.data.userFirstname);
           sessionStorage.setItem('userId', response.data.userID);
-
           this.$router.push({ name: 'Session', params: { userId: response.data.userID } });
         } if (response.status === 401) {
           this.loginError = "Adresse e-mail ou mot de passe incorrect.";
@@ -218,6 +214,7 @@ p{
   text-decoration: none;
   font-weight: bold;
 }
+
 .btn-inscrivez-vous:hover{
   background:  #f4d03f
 }
@@ -370,7 +367,6 @@ p{
   border-radius: 10px;
 }
 
-
 .form-group {
   margin-bottom: 20px;
 }
@@ -483,7 +479,6 @@ p{
     color: #000000;
     font-size: 15px;
     margin: -250px auto;
-
     line-height: 50px;
     text-align: center;
     border-radius: 5px;
@@ -632,7 +627,6 @@ p{
 
   .forgot-password-link:hover {
     text-decoration: underline;
-
   }
 
   .create-account-link {
@@ -646,7 +640,6 @@ p{
     text-decoration: underline;
   }
 }
-
 
 /* Responsive design 320px-479px */
 @media (min-width:320px) and (max-width:479px) {
@@ -865,7 +858,6 @@ p{
   }
 }
 
-
 /* Responsive design 480px-729px */
 @media (min-width:480px) and (max-width:729px) {
 
@@ -919,7 +911,6 @@ p{
     color: #000000;
     font-size: 15px;
     margin: -100px auto;
-
     line-height: 50px;
     text-align: center;
     border-radius: 5px;
@@ -1295,7 +1286,6 @@ p{
       text-decoration: underline;
     }
   }
-
 
   /* Responsive design 860px-999px */
   @media (min-width: 860px) and (max-width: 999px) {
@@ -1773,7 +1763,6 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
-
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -1986,7 +1975,6 @@ p{
         color: #000000;
         font-size: 15px;
         margin: 40px auto;
-
         line-height: 50px;
         text-align: center;
         border-radius: 5px;
@@ -2571,5 +2559,3 @@ p{
 }
 
 </style>
-
-
