@@ -136,8 +136,11 @@ export default {
       try {
         const response = await axios.post('http://localhost:5000/login', this.loginDetails);
         if (response.status === 200) {
-          sessionStorage.setItem('userFirstname', response.data.userFirstname);
           sessionStorage.setItem('userId', response.data.userID);
+          sessionStorage.setItem('userFirstname', response.data.userFirstname);
+          sessionStorage.setItem('userLastname', response.data.userLastname);
+          sessionStorage.setItem('userEmail', response.data.userEmail);
+          sessionStorage.setItem('userPhone', response.data.userPhone);
           this.$router.push({ name: 'Session', params: { userId: response.data.userID } });
         } if (response.status === 401) {
           this.loginError = "Adresse e-mail ou mot de passe incorrect.";
