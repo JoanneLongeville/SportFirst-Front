@@ -70,6 +70,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import frLocale from '@fullcalendar/core/locales/fr';
+import axios from 'axios';
 
 export default {
   name: 'UserSession',
@@ -112,14 +113,13 @@ export default {
           { daysOfWeek: [1, 2, 3, 4, 5, 6], startTime: '09:00', endTime: '12:00' },
           { daysOfWeek: [1, 2, 3, 4, 5, 6], startTime: '15:00', endTime: '21:00' }
         ],
-        // Couleur globale des événements
+        // Events global colors
         eventBackgroundColor: '#228B22',
-
         eventTextColor: '#FFFFFF',
         //events: this.getAvailableSlots(),
         eventClick: this.handleEventClick,
         select: this.handleDateSelect,
-        // ...autres options...
+        // ...other options...
       },
       showMenu: false
     };
@@ -152,7 +152,18 @@ export default {
             title: 'Réservé',
             start: selectInfo.start,
             end: selectInfo.end,
-            allDay: selectInfo.allDay
+            allDay: selectInfo.allDay,
+            eventBackgroundColor: '#228B22',
+            eventTextColor: '#FFFFFF',
+          });
+          axios.post('http://localhost:5000/reservations', {
+            userId: this.userId,
+            start: selectInfo.start,
+            end: selectInfo.end
+          }).then(response => {
+            console.log(response.data);
+          }).catch(error => {
+            console.log(error);
           });
         }
       } else {
