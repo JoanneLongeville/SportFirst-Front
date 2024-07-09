@@ -49,10 +49,6 @@
       <h3>Informations Personnelles</h3>
       <input v-model="userProfile.firstname" :readonly="!isEditing">
       <input v-model="userProfile.lastname" :readonly="!isEditing">
-      <input v-model="userProfile.date_of_birth" :readonly="!isEditing" type="date">
-      <input v-model="userProfile.address" :readonly="!isEditing">
-      <input v-model="userProfile.zipcode" :readonly="!isEditing">
-      <input v-model="userProfile.city" :readonly="!isEditing">
       <input v-model="userProfile.phone" :readonly="!isEditing">
       <input v-model="userProfile.email" :readonly="!isEditing" type="email">
       <input v-model="userProfile.password" :readonly="!isEditing" type="password">
@@ -90,10 +86,6 @@ export default {
       userProfile: {
         firstname : '',
         lastname: '',
-        date_of_birth:'',
-        address:'',
-        zipcode :'',
-        city:'',
         phone:'',
         email:'',
         password:'',
