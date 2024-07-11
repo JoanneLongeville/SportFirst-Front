@@ -6,10 +6,6 @@
     <div class="menu" :class="{ 'show-menu': showMenu }">
       <ul class="menu-list">
         <li>
-          <i class="fa-regular fa-user"></i>
-          <a @click="showProfile">Profil</a>
-        </li>
-        <li>
           <i class="fa-regular fa-calendar"></i>
           <a @click="showReservation">Vos réservations</a>
         </li>
