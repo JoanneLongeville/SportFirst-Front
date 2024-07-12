@@ -177,6 +177,14 @@ export default {
         { daysOfWeek: [1, 2, 3, 4, 5, 6], startTime: '15:00', endTime: '21:00' }
       ];
 
+      const startHour = start.getHours();
+      const endHour = end.getHours();
+
+      // Check if selected time is between 12:00 and 15:00
+      if ((startHour >= 12 && startHour < 15) || (endHour > 12 && endHour <= 15)) {
+        return false;
+      }
+
       return businessHours.some(bh => {
         const dayOfWeek = start.getDay();
         if (bh.daysOfWeek.includes(dayOfWeek)) {
