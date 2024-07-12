@@ -166,6 +166,19 @@ export default {
         const confirmCancellation = confirm("Voulez-vous annuler cette réservation ?");
         if (confirmCancellation) {
           info.event.remove();
+
+          const params = {
+            userId: this.userId,
+            start: info.event.start.toISOString(),
+            end: info.event.end.toISOString()
+          }
+          axios.delete('http://localhost:5000/reservations', {
+            params: params
+          }).then(response => {
+            console.log(response.data);
+          }).catch(error => {
+            console.log(error);
+          });
         }
       } else {
         alert("L'annulation n'est autorisée que pour les événements prévus dans plus de 48 heures.");
