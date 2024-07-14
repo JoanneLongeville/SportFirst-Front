@@ -104,10 +104,10 @@ export default {
         // Events global colors
         eventBackgroundColor: '#228B22',
         eventTextColor: '#FFFFFF',
-        //events: this.getAvailableSlots(),
+        // events: this.getAvailableSlots(),
         eventClick: this.handleEventClick,
         select: this.handleDateSelect,
-        // ...other options...
+        // events: this.getEvents()
       },
       showMenu: false
     };
@@ -194,7 +194,7 @@ export default {
       const endHour = end.getHours();
 
       // Check if selected time is between 12:00 and 15:00
-      if ((startHour >= 12 && startHour < 15) || (endHour > 12 && endHour <= 15)) {
+      if ((startHour >= 12 && startHour < 15) || (endHour > 12 && endHour < 15)) {
         return false;
       }
 
@@ -211,6 +211,26 @@ export default {
         return false;
       });
     },
+    // getEvents() {
+    //   return (fetchInfo, successCallback, failureCallback) => {
+    //     axios.get('http://localhost:5000/reservations')
+    //       .then(response => {
+    //         const events = response.data.map(event => ({
+    //           title: 'Réservé',
+    //           start: event.start,
+    //           end: event.end,
+    //           allDay: event.allDay,
+    //           backgroundColor: event.isScheduled ? '#DDDDDD' : '#228B22',
+    //           textColor: event.isScheduled ? '#888888' : '#FFFFFF'
+    //         }));
+    //         successCallback(events);
+    //       })
+    //       .catch(error => {
+    //         console.error('Erreur lors de la récupération des événements :', error);
+    //         failureCallback(error);
+    //       });
+    //   };
+    // },
     editProfile() {
       this.isEditing = true;
     },
