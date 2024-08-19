@@ -118,11 +118,31 @@ export default {
     this.userProfile.lastname = sessionStorage.getItem('userLastname') || 'Nom';
     this.userProfile.phone = sessionStorage.getItem('userPhone') || 'Téléphone';
     this.userProfile.email = sessionStorage.getItem('userEmail') || 'E-mail';
+    // this.loadReservations();
   },
 
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu;
+    },
+    loadReservations() {
+      axios.get('http://localhost:5000/reservations', {
+        params: {
+          userId: this.userId
+        }
+      }).then(response => {
+        const events = response.data.map(event => ({
+          title: 'Réservé',
+          start: event.start,
+          end: event.end,
+          allDay: event.allDay,
+          backgroundColor: event.isScheduled ? '#DDDDDD' : '#228B22',
+          textColor: event.isScheduled ? '#888888' : '#FFFFFF'
+        }));
+        this.calendarOptions.events = events;
+      }).catch(error => {
+        console.error('Erreur lors de la récupération des événements :', error);
+      });
     },
     handleDateSelect(selectInfo) {
       const now = new Date();
