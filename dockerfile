@@ -10,6 +10,9 @@ COPY package*.json ./
 # Installe uniquement les dépendances nécessaires
 RUN npm install --only=production
 
+# Installe la base de données des navigateurs
+RUN npx update-browserslist-db@latest
+
 # Copie les autres fichiers du projet
 COPY . .
 
